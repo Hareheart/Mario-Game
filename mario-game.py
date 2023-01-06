@@ -1,13 +1,15 @@
 import pygame, os
-pygame.font.init()
+from maps import mapdata
 
+pygame.font.init()
+pygame.init
 
 # WINDOW VARIABLES
 WIDTH, HEIGHT = 960, 352
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ghoul Harvester")
 FPS = 60
-
+mdata = mapdata(map_data, surface)
 BACKGROUND_COLOR = 89, 7, 0
 
 WHITE = 255, 255, 255
