@@ -1,5 +1,7 @@
 import pygame, os
 from maps import mapdata
+from layerinfo import level_1
+
 
 pygame.font.init()
 pygame.init
@@ -9,7 +11,8 @@ WIDTH, HEIGHT = 960, 352
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ghoul Harvester")
 FPS = 60
-mdata = mapdata(map_data, surface)
+tilesize = 16
+mdata = mapdata(level_1, screen)
 BACKGROUND_COLOR = 89, 7, 0
 
 WHITE = 255, 255, 255
@@ -82,7 +85,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-
+            mdata.run
             if event.type == pygame.KEYDOWN:
                 # Jumping
                 if event.key == pygame.K_UP:
