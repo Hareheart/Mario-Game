@@ -1,20 +1,19 @@
-import pygame, os
+import pygame, os, sys
 from maps import mapdata
 from layerinfo import level_1
 
 
 pygame.font.init()
-pygame.init
-
+pygame.init()
+pygame.display.init()
 # WINDOW VARIABLES
-WIDTH, HEIGHT = 960, 352
+WIDTH, HEIGHT = 480, 352
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ghoul Harvester")
 FPS = 60
-tilesize = 16
 mdata = mapdata(level_1, screen)
-BACKGROUND_COLOR = 89, 7, 0
 
+BACKGROUND_COLOUR = 79, 12, 6
 WHITE = 255, 255, 255
 BLACK = 0, 0, 0
 RED = 255, 0, 0
@@ -40,15 +39,13 @@ gravity = 0
 player_vel = 5
 bullet_vel = 8
 
-def draw_window(player, enemy, bullets, player_health):
-    screen.fill(BACKGROUND_COLOR)
-
+def draw_window(player, enemy, player_health):
+    screen.fill(BACKGROUND_COLOUR)
     health_text = health_font.render("Health: " + str(player_health), 1, BLACK)
     screen.blit(health_text, (10, 10))
 
     screen.blit(warrior_image, (player.x, player.y))
     screen.blit(enemy_image, (enemy.x, enemy.y))
-
 
 def physics(keys_pressed, player):
     global gravity
@@ -73,8 +70,6 @@ def main():
     player = pygame.Rect(100, 100, warrior_width, warrior_height)
     enemy = pygame.Rect(700, 100, enemy_width, enemy_height)
 
-    bullets = []
-
     player_health = 5
 
     clock = pygame.time.Clock()
@@ -85,7 +80,8 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-            mdata.run
+                break
+
             if event.type == pygame.KEYDOWN:
                 # Jumping
                 if event.key == pygame.K_UP:
@@ -94,9 +90,10 @@ def main():
 
             if event.type == player_hit:
                 player_health -= 1
-        
+        mdata.run()
+        pygame.display.update()
         lose_text = ""
-        if player_health <= 0:
+        if player_health == 0:
             lose_text = "You lose!"
 
         if lose_text != "":
@@ -105,7 +102,7 @@ def main():
 
         keys_pressed = pygame.key.get_pressed()
         physics(keys_pressed, player)
-        draw_window(player, enemy, bullets, player_health)
+        draw_window(player, enemy, player_health)
 
     main()
 
