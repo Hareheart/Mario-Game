@@ -27,15 +27,6 @@ winner_font = pygame.font.SysFont('comicsans', 100)
 # EVENTS
 player_hit = pygame.USEREVENT + 1
 
-# SPRITE VARIABLES
-warrior_image = pygame.image.load(os.path.join('Assets', 'sunwarriour.png'))
-warrior_width = 60
-warrior_height = 100
-
-enemy_image = pygame.image.load(os.path.join('Assets', 'melee-enemy.png'))
-enemy_width = 60
-enemy_height = 100
-
 # PHYSICS VARIABLES
 gravity = 0
 player_vel = 5
@@ -46,9 +37,6 @@ def draw_window(player, enemy, player_health):
     screen.fill(BACKGROUND_COLOUR)
     health_text = health_font.render("Health: " + str(player_health), 1, BLACK)
     screen.blit(health_text, (10, 10))
-
-    screen.blit(warrior_image, (player.x, player.y))
-    screen.blit(enemy_image, (enemy.x, enemy.y))
 
 # Physics
 def physics(keys_pressed, player):
@@ -62,6 +50,86 @@ def physics(keys_pressed, player):
         player.x += player_vel
 
 # Lose
+    
+
+class Player(pygame.sprite.Sprite):
+    def _init_(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(os.path.join('Assets', 'sunwarriour.png'))
+        self.damage = 1
+        self.alive == True
+        #self.x = in progress
+        #self.y = in progress
+
+    def image_load():
+        pass
+
+    def damage_output(self, alive, Enemy, damage):
+        if alive == True:
+            #if player hits enemy:
+                # enemy health -= damage
+            pass
+
+    def movement(self, x, y, alive):
+        keys_pressed = pygame.key.get_pressed()
+        if alive == True:
+            # Imports gravity and creates exponential relationship where gravity
+            # increases exponentially and affects player's y position
+            global gravity
+            gravity += 0.8
+            y += gravity
+
+            # If player presses left arrow key they move left
+            # and right arrow key moves right by certain amount
+            if keys_pressed[pygame.K_LEFT]:
+                x -= player_vel
+            if keys_pressed[pygame.K_RIGHT]:
+                x += player_vel
+
+    def health_management(self, health, alive, kill_player):
+        if alive == True:
+            if health <= 0:
+                kill_player()
+
+    def kill_player(self, alive):
+        if alive != True:
+            self.kill()
+
+class Boss(pygame.sprite.Sprite):
+    def _init_(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(os.path.join('Assets', 'boss.png'))
+        self.damage = 10
+        self.health = 10
+        self.alive == True
+        # self.x = in progress
+        # self.y = in progress
+
+    def image_load():
+        pass
+
+    def damage_output(self, x, damage, alive, player):
+        if alive == True:
+            if x - 5 <= player.x:
+                player.health -= damage
+
+    def movement(self, x, alive):
+        if alive == True:
+            x -= 2
+
+    def health_management(self, health, alive, kill_boss):
+        if alive == True:
+            #if player hits boss:
+               # health -= 1
+               # if health <= 0:
+                #    kill_boss()
+            pass
+
+    def kill_boss(self, alive):
+        if alive != True:
+            self.kill()
+            
+
 def spawn_lose_text(lose_text):
     draw_lose_text = winner_font.render(lose_text, 1, BLACK)
     screen.blit(draw_lose_text, (WIDTH/2 - draw_lose_text.get_width()/2, HEIGHT/2 - draw_lose_text.get_height()/2))
@@ -70,11 +138,6 @@ def spawn_lose_text(lose_text):
 
 # main logic
 def main():
-    player = pygame.Rect(100, 100, warrior_width, warrior_height)
-    enemy = pygame.Rect(700, 100, enemy_width, enemy_height)
-
-    player_health = 5
-
     clock = pygame.time.Clock()
     run = True
     while run:
@@ -102,10 +165,6 @@ def main():
         if lose_text != "":
             spawn_lose_text(lose_text)
             break
-
-        keys_pressed = pygame.key.get_pressed()
-        physics(keys_pressed, player)
-        draw_window(player, enemy, player_health)
 
     main()
 
