@@ -34,7 +34,3 @@ class mapdata1:
         # map run
         self.terrain_sprites.draw(self.display)
         self.terrain_sprites.update(self.world_shift)
-
-
-
-
