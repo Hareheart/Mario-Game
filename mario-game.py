@@ -1,20 +1,19 @@
 import pygame, os, sys
-from maps import mapdata1
+from maps import mapdata
 from layerinfo import level_1
 
-# Initializing everything
+
 pygame.font.init()
 pygame.init()
 pygame.display.init()
+
 # WINDOW VARIABLES
-WIDTH, HEIGHT = 480  , 352
+WIDTH, HEIGHT = 480, 352
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ghoul Harvester")
 FPS = 60
+mdata = mapdata(level_1, screen)
 
-mdata = mapdata1(level_1, screen)
-
-# Colour Variables
 BACKGROUND_COLOUR = 79, 12, 6
 WHITE = 255, 255, 255
 BLACK = 0, 0, 0
@@ -32,103 +31,10 @@ gravity = 0
 player_vel = 5
 bullet_vel = 8
 
-# Graphics
 def draw_window(player, enemy, player_health):
     screen.fill(BACKGROUND_COLOUR)
     health_text = health_font.render("Health: " + str(player_health), 1, BLACK)
     screen.blit(health_text, (10, 10))
-
-# Physics
-def physics(keys_pressed, player):
-    global gravity
-    gravity += 0.8
-    player.y += gravity
-
-    if keys_pressed[pygame.K_LEFT]:
-        player.x -= player_vel
-    if keys_pressed[pygame.K_RIGHT]:
-        player.x += player_vel
-
-# Lose
-    
-
-class Player(pygame.sprite.Sprite):
-    def _init_(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(os.path.join('Assets', 'sunwarriour.png'))
-        self.damage = 1
-        self.alive == True
-        #self.x = in progress
-        #self.y = in progress
-
-    def image_load():
-        pass
-
-    def damage_output(self, alive, Enemy, damage):
-        if alive == True:
-            #if player hits enemy:
-                # enemy health -= damage
-            pass
-
-    def movement(self, x, y, alive):
-        keys_pressed = pygame.key.get_pressed()
-        if alive == True:
-            # Imports gravity and creates exponential relationship where gravity
-            # increases exponentially and affects player's y position
-            global gravity
-            gravity += 0.8
-            y += gravity
-
-            # If player presses left arrow key they move left
-            # and right arrow key moves right by certain amount
-            if keys_pressed[pygame.K_LEFT]:
-                x -= player_vel
-            if keys_pressed[pygame.K_RIGHT]:
-                x += player_vel
-
-    def health_management(self, health, alive, kill_player):
-        if alive == True:
-            if health <= 0:
-                kill_player()
-
-    def kill_player(self, alive):
-        if alive != True:
-            self.kill()
-
-class Boss(pygame.sprite.Sprite):
-    def _init_(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(os.path.join('Assets', 'boss.png'))
-        self.damage = 10
-        self.health = 10
-        self.alive == True
-        # self.x = in progress
-        # self.y = in progress
-
-    def image_load():
-        pass
-
-    def damage_output(self, x, damage, alive, player):
-        if alive == True:
-            if x - 5 <= player.x:
-                player.health -= damage
-
-    def movement(self, x, alive):
-        if alive == True:
-            x -= 2
-
-    def health_management(self, health, alive, kill_boss):
-        if alive == True:
-            #if player hits boss:
-               # health -= 1
-               # if health <= 0:
-                #    kill_boss()
-            pass
-
-    def kill_boss(self, alive):
-        if alive != True:
-            self.kill()
-            
 
 def spawn_lose_text(lose_text):
     draw_lose_text = winner_font.render(lose_text, 1, BLACK)
@@ -136,7 +42,7 @@ def spawn_lose_text(lose_text):
     pygame.display.update()
     pygame.time.delay(3000)
 
-# main logic
+
 def main():
     clock = pygame.time.Clock()
     run = True
@@ -147,12 +53,6 @@ def main():
                 run = False
                 pygame.quit()
                 break
-
-            if event.type == pygame.KEYDOWN:
-                # Jumping
-                if event.key == pygame.K_UP:
-                    global gravity
-                    gravity = -10
 
             if event.type == player_hit:
                 player_health -= 1
