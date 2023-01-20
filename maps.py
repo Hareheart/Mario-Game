@@ -22,7 +22,7 @@ class mapdata1:
                         tilesheet1 = import_cut_graphics('../Mario-Game/terrain.png')
                         tilesurf = tilesheet1[int(val)]
                         sprite = stattile(tilesize, x, y, tilesurf) 
-                        sprite_group.add(sprite)  
+                        sprite_group.add(sprite)
         return sprite_group
 
     def enemy_collision_reverse(self):
