@@ -1,5 +1,5 @@
 import pygame, os, sys
-from maps import mapdata
+from maps import mapdata1
 from layerinfo import level_1
 
 
@@ -12,7 +12,7 @@ WIDTH, HEIGHT = 480, 352
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ghoul Harvester")
 FPS = 60
-mdata = mapdata(level_1, screen)
+mdata = mapdata1(level_1, screen)
 
 BACKGROUND_COLOUR = 79, 12, 6
 WHITE = 255, 255, 255
@@ -36,12 +36,6 @@ def draw_window(player, enemy, player_health):
     health_text = health_font.render("Health: " + str(player_health), 1, BLACK)
     screen.blit(health_text, (10, 10))
 
-def spawn_lose_text(lose_text):
-    draw_lose_text = winner_font.render(lose_text, 1, BLACK)
-    screen.blit(draw_lose_text, (WIDTH/2 - draw_lose_text.get_width()/2, HEIGHT/2 - draw_lose_text.get_height()/2))
-    pygame.display.update()
-    pygame.time.delay(3000)
-
 
 def main():
     clock = pygame.time.Clock()
@@ -58,15 +52,6 @@ def main():
                 player_health -= 1
         mdata.run()
         pygame.display.update()
-        lose_text = ""
-        if player_health == 0:
-            lose_text = "You lose!"
-
-        if lose_text != "":
-            spawn_lose_text(lose_text)
-            break
-
-    main()
 
 
 if __name__ == "__main__":
