@@ -4,6 +4,7 @@ import pygame
 level_1 = {
     'Main': 'map1/map1_Main .csv',
     'Enemies': 'map1/map1_Enemies.csv',
+    'miniboss': 'map1/map1_Enemies Borders.csv',
     'Lava': 'map1/map1_Lava.csv'}
 
 def import_cut_graphics(path):
