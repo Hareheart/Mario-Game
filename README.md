@@ -29,7 +29,7 @@ This game, created by the brilliant minds of Hareheart and Blaze, is a history i
 ###### The procedure part in this code segment is the first line that initializes the function/method as "movement" and takes arguments by passing self, speed, position, and gravity, which means these variables can be used in the method itself.
 
 ##### Algorithm
-###### Sequencing: Sequencing is used in this segment as the program constantly progresses through each line and runs it from top to bottom. It first defines keys_pressed, then it increases the value of gravity and adds it to the player's y-position, and then it checkes whether a key is being pressed, and if so, it moves the player by a certain amount. It followS a clear path throughout the code, hence the term sequencing.
+###### Sequencing: Sequencing is used in this segment as the program constantly progresses through each line and runs it from top to bottom. It first defines keys_pressed, then it increases the value of gravity and adds it to the player's y-position, and then it checkes whether a key is being pressed, and if so, it moves the player by a certain amount. It follows a clear path throughout the code, hence the term sequencing.
 
 ###### Selection: Selection is used in the if-statements of the segment, where if the left or right arrow key is currently being pressed by the user, then the player's x position changes. In other words, an action only progesses if a certain condition is met, hence the term selection.
 
@@ -37,6 +37,8 @@ This game, created by the brilliant minds of Hareheart and Blaze, is a history i
 <img width="172" alt="image" src="https://user-images.githubusercontent.com/89731534/213765547-c13c43a2-9415-4c6e-9960-4a326c4ce245.png">
 
 ###### The method is being called in the update method which is referenced 
+
+##### Procedural Abstraction helps manage complexity in my code due to the organization that allows me to call the function/method in the update instead of having to write the actual code in the update, which would be a lot less readable. If I were to replace all the methods I call in the update method with the code it contained, there would be an unnecessary amount of lines of code, whereas using Procedural Abstaction, the reader can refer back to each individual method and the code would be a lot more readable.
 
 
 
