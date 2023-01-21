@@ -26,7 +26,7 @@ This game, created by the brilliant minds of Hareheart and Blaze, is a history i
 <img width="413" alt="image" src="https://user-images.githubusercontent.com/89731534/213758840-b4fe6545-de44-44cb-8c9a-e248f7a3f434.png">
 
 ##### Procedure
-###### The procedure part in this code segment is the first line that initializes the function/method as "movement" and takes arguments by passing self, speed, position, and gravity, which means these variables can be used in the method itself.
+###### The procedure part in this code segment is the first line that initializes the function/method as "movement" and takes arguments by passing self, speed, position, and gravity, which means these variables that were initialized in the __init__() function can be used in the method itself.
 
 ##### Algorithm
 ###### Sequencing: Sequencing is used in this segment as the program constantly progresses through each line and runs it from top to bottom. It first defines keys_pressed, then it increases the value of gravity and adds it to the player's y-position, and then it checkes whether a key is being pressed, and if so, it moves the player by a certain amount. It follows a clear path throughout the code, hence the term sequencing.
