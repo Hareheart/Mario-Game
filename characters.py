@@ -55,6 +55,7 @@ class Enemy(Player):
         self.speed = randint(2,5)
         self.image = pygame.Surface((size, size))
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.health = 5
 
     def reverse_image(self):
         if self.speed > 0:
@@ -65,10 +66,6 @@ class Enemy(Player):
 
     def reverse(self):
         self.speed *= -1
-
-    def damage_output(self, x, damage, player):
-        if x == player.x:
-            player.health -= damage
 
     def health_management(self, kill_enemy):
         if self.hit == True:
@@ -85,14 +82,57 @@ class Enemy(Player):
         self.health_management()
 
 
-class Boss(Player):
+class Miniboss(Player):
     def _init_(self, size, x, y):
         super().__init__(self)
         self.speed = randint(2,5)
         self.image = pygame.Surface((size, size))
         self.rect = self.image.get_rect(topleft=(x, y))
-        self.image = pygame.image.load(os.path.join('Assets', 'boss.png'))
+        self.image = pygame.image.load(os.path.join('Assets', 'miniboss.png'))
         self.damage = 2
+        self.health = 3
+        self.alive == True
+
+    def damage_output(self, x, damage, player):
+        if x - 5 <= player.rect.x or x + 5 >= player.rect.x:
+            player.health -= damage
+
+    def reverse_image(self):
+        if self.speed > 0:
+            self.image = pygame.transform.flip(self.image, True, False)
+    
+    def move(self):
+        self.rect.x += self.speed
+
+    def reverse(self):
+        self.speed *= -1
+
+    def health_management(self, health, kill_miniboss):
+        if self.hit == True:
+            self.health -= 1
+            if health <= 0:
+                kill_miniboss()
+
+    def kill_miniboss(self, alive):
+        if alive != True:
+            self.kill()
+
+    def update(self,shift):
+        self.rect.x += shift
+        self.move()
+        self.reverse_image()
+        self.damage_output()
+        self.health_management()
+
+
+class Boss(Player):
+    def _init_(self, size, x, y):
+        super().__init__(self)
+        self.speed = randint(2,7)
+        self.image = pygame.Surface((size, size))
+        self.rect = self.image.get_rect(topleft=(x, y))
+        self.image = pygame.image.load(os.path.join('Assets', 'boss.png'))
+        self.damage = 3
         self.health = 10
         self.alive == True
 
