@@ -52,21 +52,57 @@
 
 ### Matthew's README
 
-#### Video:
+#### **Video**:
 ##### Program not running, no video permitted by teacher.
 
-#### Program Functionality
+#### **Program Functionality**
 ##### Ghoul Harvester was created in Pygame. The main character kills enemies to win the game as well as do some cool parkour. The game has a single area with enemies spawned all over the map that he has to overcome. The player is controlled by the user, but the mini-boss, boss, and enemy are preprogrammed and controlled by the computer.
 ##### There isnt really any use for this program other than enjoyment. It is good when you want to relax or just enjoy a short respite from reality.
-#### New Skills
+#### **New Skills**
 ##### The new skills I learned when completing this project include working with CSV files, working with Tiled and Aseprite, working with pygame, and finally, classes. The pygame module is the brain of the whole code, including all the clases and functions that I needed to implement in my code in order for it to work one of them includes the function pygame.init() which is used to initialize all of the functions in the module. The next skill I learned was using Tield and Aseprite to create pixel art. Pixel art is a grpahic style using single pixels to create art. Below you can see the images I created. Another skill I learned was working with csv files. CSV files are a file format that seperate data in a table format. This file format is he file format that I used to store the image data in the program. I used it for positioning the different tiles for the map and the characters. I worked with classes in this program. Classes are a way to define object properties and simplify them.
 
 <img width="379" alt="image" src="https://user-images.githubusercontent.com/68640945/214242754-a450d6cf-2431-4587-b845-f70c85182905.png">
-###### ^ a class
-![miniboss](https://user-images.githubusercontent.com/68640945/214243699-75a18524-2b24-4a63-afba-bbd097328be6.png)
-###### ^ a miniboss
-###### Links for different programs and types used:
-###### Classes()
-###### Tiled(Pixel art Program: )
-###### Aseprite(Pixel art Program: )
-######
+
+##### ^ a class including the pygame module
+
+<img width="222" alt="image" src="https://user-images.githubusercontent.com/68640945/214322312-1a66f000-a461-4028-b4da-fe5d3430880a.png">
+
+##### ^ a miniboss made using aseprite and imported into Tiled
+
+<img width="634" alt="image" src="https://user-images.githubusercontent.com/68640945/214336733-5091d30c-e994-46b8-bf34-b1689a8c2d86.png">
+
+##### ^ CSV file example
+
+#### **Links for different programs and links I used**:
+##### Classes(https://www.w3schools.com/python/python_classes.asp)
+##### Tiled(Pixel art Program: https://www.mapeditor.org/)
+##### Aseprite(Pixel art Program: https://www.aseprite.org/)
+##### CSV(https://docs.fileformat.com/spreadsheet/csv/)
+
+#### **Data Abstraction**
+##### Abstraction is defined as a method for keeping complex and unnecessary information from the user. I used data abstraction to make the class mapdata1. It is where I implemented the code for the other classes like the player class. I also define the paramaters for printing the code(the function _create_tile_group(layout, type)_) This is the code:
+
+<img width="379" alt="image" src="https://user-images.githubusercontent.com/68640945/214242754-a450d6cf-2431-4587-b845-f70c85182905.png">
+
+##### As you can see, this was used to import the program's different CSV files and classes and the layout of the file and prints graphics to the screen. This gives the user the graphics were simple to implement while in reality, it took more than 100 lines to implement all of the graphics and print them.
+
+#### **Procedural Abstraction**
+
+<img width="349" alt="image" src="https://user-images.githubusercontent.com/68640945/214341444-fcbfb853-5258-4f88-adc9-ddb392523af4.png">
+
+#### Procedure
+##### The procedure that takes an argument in my code as referenced above is the scroll_x function which takes the argument self. 
+
+##### Algorithm
+
+##### Sequencing and Selection: This code detects the player moving and shifts the horizontal movement of the screen. It also detects if the player is standing still and stops the screen from moving if the player is not moving. This causes the program to run through the code any time it senses that any of the parameters have been made.
+##### Iteration: Iteration means that the code repeats over and over as long as a condition is satisfied just like the code above. This method can be iterated for every move that the player does as long as the player moves. Iteration is what this is called. 
+#### Value Return
+##### The first things I do is define all of the variables that I need: The player sprite, the direction and the horizontal direction of the player. I then take the size of the screen and use it to determine how I will shift the map according to the state of the player. This returns true or false depending on the state of the player.
+
+<img width="311" alt="image" src="https://user-images.githubusercontent.com/68640945/214354831-9e4844cc-2a3c-4008-a91f-e50117aabf8e.png">
+
+##### The movement method is called in the run function in order to run the function.
+
+##### Procedural Abstraction helped me call my code and use functions easily. Without it, my code would have been long and tedious as well as inefficient. 
+
