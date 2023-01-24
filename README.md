@@ -49,12 +49,24 @@
 ##### Procedural Abstraction helps manage complexity in my code due to the organization that allows me to call the function/method in the update instead of having to write the actual code in the update, which would be a lot less readable. If I were to replace all the methods I call in the update method with the code it contained, there would be an unnecessary amount of lines of code, whereas using Procedural Abstraction, the reader can refer back to each individual method and the code would be a lot more readable.
 
 
-#
 
 ### Matthew's README
 
 #### Video:
+##### Program not running, no video permitted by teacher.
 
 #### Program Functionality
 ##### Ghoul Harvester was created in Pygame. The main character kills enemies to win the game as well as do some cool parkour. The game has a single area with enemies spawned all over the map that he has to overcome. The player is controlled by the user, but the mini-boss, boss, and enemy are preprogrammed and controlled by the computer.
-#### 
+##### There isnt really any use for this program other than enjoyment. It is good when you want to relax or just enjoy a short respite from reality.
+#### New Skills
+##### The new skills I learned when completing this project include working with CSV files, working with Tiled and Aseprite, working with pygame, and finally, classes. The pygame module is the brain of the whole code, including all the clases and functions that I needed to implement in my code in order for it to work one of them includes the function pygame.init() which is used to initialize all of the functions in the module. The next skill I learned was using Tield and Aseprite to create pixel art. Pixel art is a grpahic style using single pixels to create art. Below you can see the images I created. Another skill I learned was working with csv files. CSV files are a file format that seperate data in a table format. This file format is he file format that I used to store the image data in the program. I used it for positioning the different tiles for the map and the characters. I worked with classes in this program. Classes are a way to define object properties and simplify them.
+
+<img width="379" alt="image" src="https://user-images.githubusercontent.com/68640945/214242754-a450d6cf-2431-4587-b845-f70c85182905.png">
+###### ^ a class
+![miniboss](https://user-images.githubusercontent.com/68640945/214243699-75a18524-2b24-4a63-afba-bbd097328be6.png)
+###### ^ a miniboss
+###### Links for different programs and types used:
+###### Classes()
+###### Tiled(Pixel art Program: )
+###### Aseprite(Pixel art Program: )
+######
